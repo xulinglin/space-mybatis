@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.space.mybatis.interceptor.MybatisFieldInterceptor,\
+  com.space.mybatis.bean.SpringUtils
+
