@@ -75,4 +75,4 @@ MybatisFieldInterceptor.fieldBindValue();对结果进行返回拼接
 
 ## 提交版本记录
 
-1.2021年9月29日 1.0.0版
+1.2021年9月29日 1.0.0版 描述：初始化项目
