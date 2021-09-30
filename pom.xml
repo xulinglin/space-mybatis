@@ -4,15 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.xulinglin</groupId>
-    <artifactId>space</artifactId>
-    <version>1.0.1</version>
+    <artifactId>space-mybatis</artifactId>
+    <version>1.0.0</version>
     <name>space</name>
-    <description>space</description>
+    <description>space-mybatis</description>
     <packaging>pom</packaging>
 
     <modules>
         <module>space-springboot</module>
-        <module>space-mybatis</module>
+        <module>space-mybatis-core</module>
     </modules>
 
     <developers>
@@ -57,7 +57,7 @@
 
             <dependency>
                 <groupId>io.github.xulinglin</groupId>
-                <artifactId>space-mybatis</artifactId>
+                <artifactId>space-mybatis-core</artifactId>
                 <version>${span.version}</version>
             </dependency>
 

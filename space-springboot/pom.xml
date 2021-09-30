@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.xulinglin</groupId>
-        <artifactId>space</artifactId>
-        <version>1.0.1</version>
+        <artifactId>space-mybatis</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>space-springboot</artifactId>
@@ -29,8 +29,7 @@
 
         <dependency>
             <groupId>io.github.xulinglin</groupId>
-            <artifactId>space-mybatis</artifactId>
-            <version>1.0.0</version>
+            <artifactId>space-mybatis-core</artifactId>
         </dependency>
 
         <dependency>
