@@ -18,9 +18,17 @@ XuLingLin Java CRUD开发工作者
 
 但类属性中声明 MybatisInterceptor 有一致时间进行,动态合并查询简化调用次数提高效率
 
-## 安装教程
+## POM 引用
 
-1.  jar包没有发布到公网仓库,暂时用源码进行使用 space-mybatis 源码包
+```
+<dependency>
+    <groupId>io.github.xulinglin</groupId>
+    <artifactId>space-mybatis</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+
 
 ## 使用说明
 

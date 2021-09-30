@@ -5,7 +5,7 @@
 
     <groupId>io.github.xulinglin</groupId>
     <artifactId>space</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>space</name>
     <description>space</description>
     <packaging>pom</packaging>
@@ -56,7 +56,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.space</groupId>
+                <groupId>io.github.xulinglin</groupId>
                 <artifactId>space-mybatis</artifactId>
                 <version>${span.version}</version>
             </dependency>
