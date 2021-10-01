@@ -5,15 +5,24 @@
 
     <groupId>io.github.xulinglin</groupId>
     <artifactId>space-mybatis</artifactId>
-    <version>1.0.0</version>
-    <name>space</name>
-    <description>space-mybatis</description>
-    <packaging>pom</packaging>
+    <version>1.0.0.RELEASE</version>
+    <!-- 项目描述 -->
+    <name>space-mybatis</name>
+    <url>https://github.com/xulinglin/space-mybatis</url>
+    <description>space-mybatis Plug-in</description>
 
+    <packaging>pom</packaging>
     <modules>
         <module>space-springboot</module>
         <module>space-mybatis-core</module>
     </modules>
+
+
+
+    <scm>
+        <connection>https://github.com/xulinglin/space-mybatis.git</connection>
+        <url>https://github.com/xulinglin/space-mybatis.git</url>
+    </scm>
 
     <developers>
         <developer>
@@ -25,13 +34,14 @@
     </developers>
 
     <properties>
-        <span.version>1.0.0</span.version>
+        <span.version>1.0.0.RELEASE</span.version>
         <java.version>1.8</java.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.compile.source>${java.version}</maven.compile.source>
         <maven.compile.target>${java.version}</maven.compile.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>2.5.3</spring-boot.version>
         <apache.maven>2.0.2</apache.maven>
@@ -86,6 +96,8 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+
 
     <profiles>
         <profile>

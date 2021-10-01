@@ -22,9 +22,9 @@ XuLingLin Java CRUD开发工作者
 
 ```
 <dependency>
-    <groupId>io.github.xulinglin</groupId>
-    <artifactId>space-mybatis-core</artifactId>
-    <version>1.0.0</version>
+  <groupId>io.github.xulinglin</groupId>
+  <artifactId>space-mybatis-core</artifactId>
+  <version>1.0.0.RELEASE</version>
 </dependency>
 ```
 

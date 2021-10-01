@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.xulinglin</groupId>
         <artifactId>space-mybatis</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0.RELEASE</version>
     </parent>
 
     <artifactId>space-mybatis-core</artifactId>
