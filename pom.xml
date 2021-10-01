@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>space-springboot</module>
-        <module>space-mybatis-core</module>
+        <module>space-core</module>
     </modules>
 
 
@@ -67,7 +67,7 @@
 
             <dependency>
                 <groupId>io.github.xulinglin</groupId>
-                <artifactId>space-mybatis-core</artifactId>
+                <artifactId>space-core</artifactId>
                 <version>${span.version}</version>
             </dependency>
 

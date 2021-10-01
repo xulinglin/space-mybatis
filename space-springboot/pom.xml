@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>io.github.xulinglin</groupId>
-            <artifactId>space-mybatis-core</artifactId>
+            <artifactId>space-core</artifactId>
         </dependency>
 
         <dependency>
