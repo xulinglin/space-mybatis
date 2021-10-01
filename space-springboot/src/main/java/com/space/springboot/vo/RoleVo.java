@@ -1,6 +1,6 @@
 package com.space.springboot.vo;
 
-import com.space.mybatis.annotation.FieldBind;
+import com.space.core.annotation.FieldBind;
 import com.space.springboot.entity.Role;
 import com.space.springboot.mybatis.interceptor.UserNameInterceptor;
 import lombok.Data;

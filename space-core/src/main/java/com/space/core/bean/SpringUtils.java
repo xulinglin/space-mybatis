@@ -1,4 +1,4 @@
-package com.space.mybatis.bean;
+package com.space.core.bean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

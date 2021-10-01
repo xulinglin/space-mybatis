@@ -1,7 +1,7 @@
 package com.space.springboot.mybatis.interceptor;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.space.mybatis.interceptor.MybatisInterceptor;
+import com.space.core.interceptor.MybatisInterceptor;
 import com.space.springboot.entity.User;
 import com.space.springboot.service.UserService;
 import org.springframework.stereotype.Service;

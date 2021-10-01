@@ -1,6 +1,6 @@
-package com.space.mybatis.interceptor;
+package com.space.core.interceptor;
 
-import com.space.mybatis.annotation.FieldBind;
+import com.space.core.annotation.FieldBind;
 
 public class MybatisFields {
 

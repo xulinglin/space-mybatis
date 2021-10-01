@@ -1,4 +1,4 @@
-package com.space.mybatis.bean;
+package com.space.core.bean;
 
 import java.util.List;
 

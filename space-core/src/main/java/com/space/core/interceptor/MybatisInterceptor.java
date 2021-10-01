@@ -1,6 +1,4 @@
-package com.space.mybatis.interceptor;
-
-import com.space.mybatis.interceptor.MybatisFieldInterceptor;
+package com.space.core.interceptor;
 
 import java.util.Collection;
 

@@ -1,6 +1,6 @@
-package com.space.mybatis.annotation;
+package com.space.core.annotation;
 
-import com.space.mybatis.interceptor.MybatisInterceptor;
+import com.space.core.interceptor.MybatisInterceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

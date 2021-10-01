@@ -3,7 +3,7 @@ package com.space.springboot.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.space.mybatis.annotation.FieldBind;
+import com.space.core.annotation.FieldBind;
 import com.space.springboot.mybatis.interceptor.RoleNameInterceptor;
 import com.space.springboot.mybatis.interceptor.UserNameInterceptor;
 import lombok.Data;

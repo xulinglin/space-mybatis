@@ -1,4 +1,4 @@
-package com.space.mybatis.asm;
+package com.space.core.asm;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.esotericsoftware.reflectasm.MethodAccess;
-import com.space.mybatis.bean.Tool;
+import com.space.core.bean.Tool;
 
 /**
  * @author xulinglin
