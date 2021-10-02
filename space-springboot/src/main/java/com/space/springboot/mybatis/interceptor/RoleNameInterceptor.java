@@ -1,7 +1,7 @@
 package com.space.springboot.mybatis.interceptor;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.space.core.interceptor.MybatisInterceptor;
+import com.space.core.Interceptor;
 import com.space.springboot.entity.Role;
 import com.space.springboot.service.RoleService;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class RoleNameInterceptor extends MybatisInterceptor<Map<String, String>> {
+public class RoleNameInterceptor extends Interceptor<String, String> {
 
     @Resource
     private RoleService roleService;

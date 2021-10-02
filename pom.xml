@@ -17,8 +17,6 @@
         <module>space-core</module>
     </modules>
 
-
-
     <scm>
         <connection>https://github.com/xulinglin/space-mybatis.git</connection>
         <url>https://github.com/xulinglin/space-mybatis.git</url>

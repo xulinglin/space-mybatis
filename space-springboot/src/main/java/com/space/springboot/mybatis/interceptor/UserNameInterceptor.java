@@ -1,7 +1,7 @@
 package com.space.springboot.mybatis.interceptor;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.space.core.interceptor.MybatisInterceptor;
+import com.space.core.Interceptor;
 import com.space.springboot.entity.User;
 import com.space.springboot.service.UserService;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class UserNameInterceptor extends MybatisInterceptor<Map<String, String>> {
+public class UserNameInterceptor extends Interceptor<String, String> {
 
     @Resource
     private UserService userService;

@@ -9,18 +9,19 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.esotericsoftware.reflectasm.MethodAccess;
-import com.space.core.bean.Tool;
+import com.space.core.bean.Tools;
 
 /**
  * @author xulinglin
  */
 public class ASMUtils {
 
-    private static Map<Class<?>, MethodAccess> methodMap = new ConcurrentHashMap<Class<?>, MethodAccess>();
+    private static Map<Class<?>, MethodAccess> methodMap = new ConcurrentHashMap<>();
     public static Map<Class<?>, Map<String, Integer>> methodIndexOfGet = new ConcurrentHashMap<>();
     public static Map<Class<?>, Map<String, Integer>> methodIndexOfSet = new ConcurrentHashMap<>();
     private static Map<Class<?>, Map<String, String>> methodIndexOfType = new ConcurrentHashMap<>();
     private static Map<String, String> nameCache = new ConcurrentHashMap<>();
+    private static Map<Class<?>, Field[]> fieldCache = new ConcurrentHashMap<>();
 
     /**
      * @param dest 目标类
@@ -54,7 +55,6 @@ public class ASMUtils {
                 if (value == null) {
                     continue;
                 }
-
                 destMethodAccess.invoke(dest, setIndex, value);
             }
         }
@@ -107,13 +107,29 @@ public class ASMUtils {
         return descMethodAccess;
     }
 
-    private static Field[] getAllFields(final Class<?> cls) {
-        final List<Field> allFieldsList = getAllFieldsList(cls);
-        return allFieldsList.toArray(new Field[allFieldsList.size()]);
+    public static Field[] getAllFields(final Class<?> cls) {
+        Field[] fields = fieldCache.get(cls);
+        try {
+            if(null == fields){
+                synchronized (cls.getClass()){
+                    fields = fieldCache.get(cls);
+                    if(null == fields){
+                        List<Field> allFieldsList = getAllFieldsList(cls);
+                        fields = allFieldsList.toArray(new Field[allFieldsList.size()]);
+                        fieldCache.put(cls,fields);
+                    }
+                }
+                //预加载
+                methodAccessFactory(cls.newInstance());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return fields;
     }
 
     private static List<Field> getAllFieldsList(final Class<?> cls) {
-        final List<Field> allFields = new ArrayList<Field>();
+        final List<Field> allFields = new ArrayList<>();
         Class<?> currentClass = cls;
         while (currentClass != null) {
             final Field[] declaredFields = currentClass.getDeclaredFields();
@@ -127,7 +143,7 @@ public class ASMUtils {
 
     public static String captureName(String name) {
         String value = nameCache.get(name);
-        if(Tool.isNotBlank(value)){
+        if(Tools.isNotBlank(value)){
             return value;
         }
         char[] cs = name.toCharArray();

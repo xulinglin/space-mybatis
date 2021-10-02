@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author xulinglin
  */
-public class Tool {
+public class Tools {
 
     public static final int zero = 0;
 

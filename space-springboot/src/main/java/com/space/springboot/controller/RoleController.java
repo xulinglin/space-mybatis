@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.space.core.asm.ASMUtils;
-import com.space.core.interceptor.MybatisFieldInterceptor;
 import com.space.springboot.entity.Role;
 import com.space.springboot.service.RoleService;
 import com.space.springboot.vo.RoleVo;
@@ -45,7 +44,6 @@ public class RoleController extends ApiController {
             ASMUtils.copyProperties(vo,value);
             listVo.add(vo);
         }
-        MybatisFieldInterceptor.fieldBindValue(listVo);
         return success(listVo);
     }
 
