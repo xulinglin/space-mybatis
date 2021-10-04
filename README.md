@@ -94,10 +94,10 @@ public IPage<User> pageService(Page<User> page, User user) {
 
 1.2021年9月29日 1.0.0.RELEASE版  描述：初始化项目 
 
-2.2021年10月1日 1.0.1.RELEASE版
+2.2021年10月1日 1.0.1.RELEASE版 (已发布)
 
 描述：space-mybatis-core 改为 space-core 以及优化代码
 
-2.2021年10月4日 1.0.2.RELEASE版 (未发布)
+2.2021年10月4日 1.0.2.RELEASE版 (已发布)
 
 描述：添加 mybatis 数据权限插件,提供 ExecutedBind 返回执行
