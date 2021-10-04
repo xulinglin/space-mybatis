@@ -1,4 +1,7 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.space.core.MybatisFieldInterceptor,\
+  com.space.core.auth.MybatisInterceptorAuthority,\
+  com.space.core.aop.ExecutedBindAop,\
+  com.space.core.aop.AuthorityAop,\
   com.space.core.bean.SpringUtils
 

@@ -5,7 +5,7 @@
 
     <groupId>io.github.xulinglin</groupId>
     <artifactId>space-mybatis</artifactId>
-    <version>1.0.1.RELEASE</version>
+    <version>1.0.2.RELEASE</version>
     <!-- 项目描述 -->
     <name>space-mybatis</name>
     <url>https://github.com/xulinglin/space-mybatis</url>
@@ -32,7 +32,7 @@
     </developers>
 
     <properties>
-        <span.version>1.0.1.RELEASE</span.version>
+        <span.version>1.0.2.RELEASE</span.version>
         <java.version>1.8</java.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.compile.source>${java.version}</maven.compile.source>

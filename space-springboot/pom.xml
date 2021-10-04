@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.xulinglin</groupId>
         <artifactId>space-mybatis</artifactId>
-        <version>1.0.1.RELEASE</version>
+        <version>1.0.2.RELEASE</version>
     </parent>
 
     <artifactId>space-springboot</artifactId>
@@ -42,6 +42,13 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis.plus.boot}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.0.1-jre</version>
+        </dependency>
+
 
         <dependency>
             <groupId>mysql</groupId>

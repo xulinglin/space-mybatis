@@ -6,12 +6,15 @@ import com.space.core.annotation.FieldBind;
 import com.space.core.asm.ASMUtils;
 import com.space.core.bean.SpringUtils;
 import com.space.core.bean.Tools;
-import com.sun.istack.internal.logging.Logger;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
@@ -19,13 +22,13 @@ import java.util.stream.Collectors;
  */
 public class FieldInterceptor {
 
-    public static Logger log = Logger.getLogger(FieldInterceptor.class);
+    public static Logger log = Logger.getLogger(FieldInterceptor.class.getName());
 
     private static Map<String, Map<String, FieldBinds>> fieldCache = new ConcurrentHashMap<>();
     private static Map<Class<?>, Boolean> executedBindCache = new ConcurrentHashMap<>();
     protected static ThreadLocal<Interceptor> threadLocal = new ThreadLocal<>();
 
-    private static Object setFieldValue(List result){
+    public static Object setFieldValue(List result){
         return setFieldValue(result,Boolean.FALSE);
     }
 
@@ -35,7 +38,7 @@ public class FieldInterceptor {
             if (null == mybatisInterceptor && Tools.isNotNull(result)) {
                 Class<?> clazz = result.get(Tools.zero).getClass();
                 String className = clazz.getName();
-                if(instanceofType(className) && (isExecutedBind(clazz) || bool))
+                if(instanceofType(className))
                     return result;
                 Map<String, FieldBinds> fieldBindMap = fieldBindMap(className, clazz);
                 if(isMapNotNull(fieldBindMap)){
@@ -45,7 +48,7 @@ public class FieldInterceptor {
                     while (iteratorGroupingBy.hasNext()){
                         Map.Entry<? extends Class<? extends Interceptor>, List<FieldBinds>> next = iteratorGroupingBy.next();
                         Class<? extends Interceptor> key = next.getKey();
-                        List<FieldBinds> value = next.getValue().stream().filter(fieldBinds -> fieldBinds.getValue().mybatis() == bool).collect(Collectors.toList());
+                        List<FieldBinds> value = next.getValue().stream().filter(fieldBinds -> fieldBinds.isMybatis() == bool).collect(Collectors.toList());
                         if(Tools.isNotNull(value)){
                             Interceptor bean = SpringUtils.getBean(key);
                             List<Object> list = new CopyOnWriteArrayList<>();
@@ -68,8 +71,12 @@ public class FieldInterceptor {
                                             Integer set = v.getSet();
                                             Object invoke = methodAccess.invoke(o, get);
                                             Object o1 = execution.get(invoke);
-                                            if(null != o1){
-                                                methodAccess.invoke(o, set,o1);
+                                            if(null != o1) {
+                                                try {
+                                                    methodAccess.invoke(o, set, o1);
+                                                } catch (Exception e) {
+                                                    log.severe("match 'name index set：" + set + ",get " + o1 + "' does not exist,From this " + className);
+                                                }
                                             }
                                         });
                                     });
@@ -126,7 +133,7 @@ public class FieldInterceptor {
                 if(map.containsKey(column)){
                     Map<String, Integer> methodIndexOfSet = ASMUtils.methodIndexOfSet.get(clazz);
                     Map<String, Integer> methodIndexOfGet = ASMUtils.methodIndexOfGet.get(clazz);
-                    FieldBinds fieldBinds = new FieldBinds(name, fieldBind, column, fieldBind.interceptor(),
+                    FieldBinds fieldBinds = new FieldBinds(name, fieldBind.mybatis(), column, fieldBind.interceptor(),
                             methodIndexOfSet.get(ASMUtils.captureName(name)), methodIndexOfGet.get(ASMUtils.captureName(column)));
                     fieldBindMap.put(field.getName(),fieldBinds);
                 }else{
@@ -139,6 +146,9 @@ public class FieldInterceptor {
     }
 
 
+    public static Interceptor get(){
+        return threadLocal.get();
+    }
 
     private static boolean isMapNotNull(Map map){
         return null != map && Tools.zero < map.size();

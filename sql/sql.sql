@@ -58,6 +58,7 @@ CREATE TABLE `user` (
                         `create_time` datetime DEFAULT NULL COMMENT '创建时间',
                         `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
                         `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+                        `dept_id` varchar(45) DEFAULT NULL,
                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,7 +69,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1','admin','1','1',NULL,'2',NULL),('2','span','2','1',NULL,'3',NULL);
+INSERT INTO `user` VALUES ('1','admin','1','1',NULL,'2',NULL,'1'),('2','span','2','1',NULL,'3',NULL,'2');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-29 19:03:30
+-- Dump completed on 2021-10-04 18:06:10

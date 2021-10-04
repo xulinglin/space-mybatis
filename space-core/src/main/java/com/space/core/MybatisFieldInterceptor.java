@@ -1,6 +1,7 @@
 package com.space.core;
 
-import com.space.core.FieldInterceptor;
+import com.esotericsoftware.reflectasm.MethodAccess;
+import com.space.core.asm.ASMUtils;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -16,7 +17,9 @@ import java.util.Properties;
  * @author xulinglin
  */
 @Component
-@Intercepts({ @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = { Statement.class }) })
+@Intercepts({
+        @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = { Statement.class })
+})
 public class MybatisFieldInterceptor implements org.apache.ibatis.plugin.Interceptor {
 
     public Object intercept(Invocation invocation) throws Throwable {

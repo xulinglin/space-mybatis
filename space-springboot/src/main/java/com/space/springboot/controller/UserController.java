@@ -2,6 +2,7 @@ package com.space.springboot.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
@@ -31,7 +32,7 @@ public class UserController extends ApiController {
     private UserService userService;
 
     /**
-     * 分页查询所有数据
+     * 分页查询所有数据 Mybatis puls
      *
      * @param page 分页对象
      * @param user 查询实体
@@ -39,7 +40,18 @@ public class UserController extends ApiController {
      */
     @GetMapping("/list")
     public R selectAll(Page<User> page, User user) {
-        return success(this.userService.page(page, new QueryWrapper<User>(user)));
+        return success(userService.pageService(page,user));
+    }
+
+    /**
+     * 分页查询所有数据 mybatis
+     *
+     * @param user 查询实体
+     * @return 所有数据
+     */
+    @GetMapping("/listMapper")
+    public R listMapper(User user) {
+        return success(userService.selectMapper(user));
     }
 
     @GetMapping("/count")

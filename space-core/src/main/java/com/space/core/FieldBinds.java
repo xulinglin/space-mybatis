@@ -10,9 +10,9 @@ public class FieldBinds {
 
     private FieldBinds(){}
 
-    protected FieldBinds(String key, FieldBind value, String column, Class<? extends Interceptor> interceptor, Integer set, Integer get){
+    protected FieldBinds(String key, boolean mybatis, String column, Class<? extends Interceptor> interceptor, Integer set, Integer get){
         this.key = key;
-        this.value = value;
+        this.mybatis = mybatis;
         this.column = column;
         this.interceptor = interceptor;
         this.set = set;
@@ -20,7 +20,7 @@ public class FieldBinds {
     }
 
     private String key;
-    private FieldBind value;
+    private boolean mybatis;
     private String column;
     private Class<? extends Interceptor> interceptor;
     private Integer set;
@@ -30,8 +30,8 @@ public class FieldBinds {
         return key;
     }
 
-    public FieldBind getValue() {
-        return value;
+    public boolean isMybatis() {
+        return mybatis;
     }
 
     public String getColumn() {

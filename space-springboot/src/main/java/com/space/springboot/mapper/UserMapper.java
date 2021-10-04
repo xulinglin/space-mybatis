@@ -33,5 +33,7 @@ public interface UserMapper extends BaseMapper<User> {
      */
     int insertOrUpdateBatch(@Param("entities") List<User> entities);
 
+
+    List<User> selectMapper(@Param("user") User user);
 }
 

@@ -8,6 +8,7 @@ import java.util.List;
 public class Tools {
 
     public static final int zero = 0;
+    public static final int one = 1;
 
     public static boolean isNotNull(List records){
         return (null != records && records.size() > 0);

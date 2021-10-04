@@ -4,6 +4,7 @@ package com.space.springboot.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
+import com.space.core.annotation.ExecutedBind;
 import com.space.core.asm.ASMUtils;
 import com.space.springboot.entity.Role;
 import com.space.springboot.service.RoleService;
@@ -37,15 +38,11 @@ public class RoleController extends ApiController {
      */
     @GetMapping("/list")
     public R selectAll(Role role) {
-        List<RoleVo> listVo = new ArrayList<>();
         List<Role> list = this.roleService.list(new QueryWrapper<Role>(role));
-        for (Role value: list) {
-            RoleVo vo = new RoleVo();
-            ASMUtils.copyProperties(vo,value);
-            listVo.add(vo);
-        }
-        return success(listVo);
+        return success(roleService.get(list));
     }
+
+
 
     /**
      * 通过主键查询单条数据

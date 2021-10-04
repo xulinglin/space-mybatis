@@ -26,6 +26,8 @@ public class User extends Model<User> {
     private String name;
     //角色id
     private String roleId;
+    //部门id
+    private String deptId;
     //创建者
     @FieldBind(column = "createBy",interceptor = UserNameInterceptor.class,mybatis = true)
     private String createBy;

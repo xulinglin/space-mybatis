@@ -9,6 +9,7 @@
         <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="deptId" column="dept_id" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
@@ -34,5 +35,13 @@
         values(create_time) , update_by = values(update_by) , update_time = values(update_time)
     </insert>
 
+    <select id="selectMapper" parameterType="com.space.springboot.entity.User" resultMap="UserMap">
+        select * from user
+        <where>
+            <if test="user.id != null and user.id != ''">
+                id = #{user.id}
+            </if>
+        </where>
+    </select>
 </mapper>
 
