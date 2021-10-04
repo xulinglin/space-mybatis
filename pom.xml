@@ -5,7 +5,7 @@
 
     <groupId>io.github.xulinglin</groupId>
     <artifactId>space-mybatis</artifactId>
-    <version>1.0.2.RELEASE</version>
+    <version>1.0.2.RELEASES</version>
     <!-- 项目描述 -->
     <name>space-mybatis</name>
     <url>https://github.com/xulinglin/space-mybatis</url>
