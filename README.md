@@ -77,6 +77,8 @@ public IPage<User> pageService(Page<User> page, User user) {
 
 @Authority 添加注解后执行当前方法的线程内SQL全部动态加数据权限。
 
+管理员用AuthorityAop.setAdmin()设置跳过数据权限操作. AuthorityAop支持管理员跟普通用户来回切换
+
 注意： 如果不权限插件定义 @Authority 无效
 
 
