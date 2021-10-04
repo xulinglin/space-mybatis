@@ -22,7 +22,7 @@ XuLingLin Java CRUD开发工作者
 <dependency>
   <groupId>io.github.xulinglin</groupId>
   <artifactId>space-core</artifactId>
-  <version>1.0.1.RELEASE</version>
+  <version>1.0.2.RELEASE</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ public IPage<User> pageService(Page<User> page, User user) {
 
 管理员用AuthorityAop.setAdmin()设置跳过数据权限操作. AuthorityAop支持管理员跟普通用户来回切换
 
-注意： 如果不权限插件定义 @Authority 无效
+注意： 如果不配置权限插件bean @Authority 无效声明也无效
 
 
 ## 如果对你有帮助,打赏项目 Img 包
@@ -92,7 +92,7 @@ public IPage<User> pageService(Page<User> page, User user) {
 
 ## 提交版本记录
 
-1.2021年9月29日 1.0.0.RELEASE版  描述：初始化项目
+1.2021年9月29日 1.0.0.RELEASE版  描述：初始化项目 
 
 2.2021年10月1日 1.0.1.RELEASE版
 
