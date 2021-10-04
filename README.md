@@ -4,7 +4,7 @@
 
 XuLingLin Java CRUD开发工作者
 
-个人博客：https://xulinglin.com (很久没维护了,因为懒)
+个人博客：https://xulinglin.com
 ## 功能介绍
 
 <ul>
@@ -29,8 +29,10 @@ XuLingLin Java CRUD开发工作者
 ## 使用说明
 
 ### 表关联查询
-1. 在字段添加 FieldBind 注解,并且提供 MybatisInterceptor 实现类进行结果返回(目前查询结果集只支持Map进行拼接处理)
-2. 调用 MybatisFieldInterceptor.fieldBindValue()进行处理
+
+#### 1.在字段添加 FieldBind 注解,并且提供 MybatisInterceptor 实现类进行结果返回(目前查询结果集只支持Map进行拼接处理)
+
+#### 2.调用 MybatisFieldInterceptor.fieldBindValue()进行处理
 
 FieldBind 属性：
 
@@ -73,15 +75,16 @@ public IPage<User> pageService(Page<User> page, User user) {
 }
 ```
 
-@Authority 声明后执行方法的当前线程内执行的SQL都动态加数据权限。注意： 如果不权限插件定义 @Authority 无效
+@Authority 添加注解后执行当前方法的线程内SQL全部动态加数据权限。
+
+注意： 如果不权限插件定义 @Authority 无效
 
 
-
-## 如果对你有帮助(请孩子喝一杯咖啡吧)
-
-### 打赏在 img包 图片中(打赏时请备注,我会在打赏人添加你的信息)
+## 如果对你有帮助,打赏项目 Img 包
 
 ## 打赏的大佬
+
+
 
 ----------
 
