@@ -101,7 +101,7 @@ public class FieldInterceptor {
         return bool;
     }
 
-    private static boolean instanceofType(String className){
+    public static boolean instanceofType(String className){
         if(className.equals("java.lang.String") ||
                 className.equals("java.lang.Integer") ||
                 className.equals("java.lang.Long") ||

@@ -40,7 +40,7 @@ public class User extends Model<User> {
     private Date updateTime;
 
     //角色名称
-    @FieldBind(column = "roleId2",interceptor = RoleNameInterceptor.class,mybatis = true)
+    @FieldBind(column = "roleId",interceptor = RoleNameInterceptor.class,mybatis = true)
     @TableField(exist = false)
     private String roleName;
 

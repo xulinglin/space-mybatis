@@ -30,9 +30,9 @@ XuLingLin Java CRUD开发工作者
 
 ### 表关联查询
 
-#### 1.在字段添加 FieldBind 注解,并且提供 MybatisInterceptor 实现类进行结果返回(目前查询结果集只支持Map进行拼接处理)
+#### 1.在字段添加 FieldBind 注解,并且提供 Interceptor 实现类进行结果返回(目前查询结果集只支持Map进行拼接处理)
 
-#### 2.调用 MybatisFieldInterceptor.fieldBindValue()进行处理
+#### 2.调用 FieldInterceptor.setFieldValue()进行处理
 
 FieldBind 属性：
 
@@ -40,7 +40,16 @@ column 为当前查询关联条件
 
 interceptor 为 MybatisInterceptor 返回结果集超类
 
-mybatis 为 true 时间调用 mybatis 执行器才会执行
+mybatis 为 true 时间调用 mybatis 进行数据查询才会执行,默认不执行
+
+手动调用 FieldInterceptor.setFieldValue() 或者在方法添加 @ExecutedBind 注解
+
+```
+//角色名称
+@FieldBind(column = "roleId",interceptor = RoleNameInterceptor.class,mybatis = true)
+@TableField(exist = false)
+private String roleName;
+```
 
 ### 数据权限
 
@@ -79,7 +88,7 @@ public IPage<User> pageService(Page<User> page, User user) {
 
 管理员用AuthorityAop.setAdmin()设置跳过数据权限操作. AuthorityAop支持管理员跟普通用户来回切换
 
-注意： 如果不配置权限插件bean @Authority 无效声明也无效
+注意： 如果不配置权限插件bean @Authority 声明也无效
 
 
 ## 如果对你有帮助,打赏项目 Img 包
