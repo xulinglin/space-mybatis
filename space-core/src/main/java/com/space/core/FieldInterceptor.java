@@ -3,7 +3,7 @@ package com.space.core;
 import com.esotericsoftware.reflectasm.MethodAccess;
 import com.space.core.annotation.ExecutedBind;
 import com.space.core.annotation.FieldBind;
-import com.space.core.asm.ASMUtils;
+import com.space.core.asm.AsmUtils;
 import com.space.core.bean.SpringUtils;
 import com.space.core.bean.Tools;
 
@@ -53,7 +53,7 @@ public class FieldInterceptor {
                             Interceptor bean = SpringUtils.getBean(key);
                             List<Object> list = new CopyOnWriteArrayList<>();
                             result.parallelStream().forEach(o ->{
-                                MethodAccess methodAccess = ASMUtils.methodAccessFactory(o);
+                                MethodAccess methodAccess = AsmUtils.methodAccessFactory(o);
                                 value.parallelStream().forEach(v ->{
                                     Integer get = v.getGet();
                                     Object invoke = methodAccess.invoke(o, get);
@@ -65,7 +65,7 @@ public class FieldInterceptor {
                                 Map execution = bean.execution(executionList);
                                 if(isMapNotNull(execution)){
                                     result.parallelStream().forEach(o ->{
-                                        MethodAccess methodAccess = ASMUtils.methodAccessFactory(o);
+                                        MethodAccess methodAccess = AsmUtils.methodAccessFactory(o);
                                         value.parallelStream().forEach(v ->{
                                             Integer get = v.getGet();
                                             Integer set = v.getSet();
@@ -121,7 +121,7 @@ public class FieldInterceptor {
         Map<String, FieldBinds> fieldBindMap = null;
         if(null == (fieldBindMap = fieldCache.get(className))){
             fieldBindMap = new HashMap<>();
-            Field[] fields = ASMUtils.getAllFields(clazz);
+            Field[] fields = AsmUtils.getAllFields(clazz);
             Map<String,Field> map = new HashMap<>();
             for (Field field : fields){ map.put(field.getName(),field); }
             for (Field field : fields) {
@@ -131,10 +131,10 @@ public class FieldInterceptor {
                 String name = field.getName();
                 String column = fieldBind.column();
                 if(map.containsKey(column)){
-                    Map<String, Integer> methodIndexOfSet = ASMUtils.methodIndexOfSet.get(clazz);
-                    Map<String, Integer> methodIndexOfGet = ASMUtils.methodIndexOfGet.get(clazz);
+                    Map<String, Integer> methodIndexOfSet = AsmUtils.methodIndexOfSet.get(clazz);
+                    Map<String, Integer> methodIndexOfGet = AsmUtils.methodIndexOfGet.get(clazz);
                     FieldBinds fieldBinds = new FieldBinds(name, fieldBind.mybatis(), column, fieldBind.interceptor(),
-                            methodIndexOfSet.get(ASMUtils.captureName(name)), methodIndexOfGet.get(ASMUtils.captureName(column)));
+                            methodIndexOfSet.get(AsmUtils.captureName(name)), methodIndexOfGet.get(AsmUtils.captureName(column)));
                     fieldBindMap.put(field.getName(),fieldBinds);
                 }else{
                     log.severe("FieldInterceptor Configuration property. '"+name+":"+column+"' does not exist,From this "+className);

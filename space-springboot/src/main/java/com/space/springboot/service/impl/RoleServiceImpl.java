@@ -2,7 +2,7 @@ package com.space.springboot.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.space.core.annotation.ExecutedBind;
-import com.space.core.asm.ASMUtils;
+import com.space.core.asm.AsmUtils;
 import com.space.springboot.mapper.RoleMapper;
 import com.space.springboot.entity.Role;
 import com.space.springboot.service.RoleService;
@@ -24,13 +24,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Override
     @ExecutedBind
     public List<RoleVo> get(List<Role> list){
-        List<RoleVo> listVo = new ArrayList<>();
-        for (Role value: list) {
-            RoleVo vo = new RoleVo();
-            ASMUtils.copyProperties(vo,value);
-            listVo.add(vo);
-        }
-        return listVo;
+        return AsmUtils.copyBeanList(list, RoleVo.class);
     }
 }
 

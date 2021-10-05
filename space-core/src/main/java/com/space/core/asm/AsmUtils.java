@@ -14,7 +14,7 @@ import com.space.core.bean.Tools;
 /**
  * @author xulinglin
  */
-public class ASMUtils {
+public class AsmUtils {
 
     private static Map<Class<?>, MethodAccess> methodMap = new ConcurrentHashMap<>();
     public static Map<Class<?>, Map<String, Integer>> methodIndexOfGet = new ConcurrentHashMap<>();
@@ -22,6 +22,30 @@ public class ASMUtils {
     private static Map<Class<?>, Map<String, String>> methodIndexOfType = new ConcurrentHashMap<>();
     private static Map<String, String> nameCache = new ConcurrentHashMap<>();
     private static Map<Class<?>, Field[]> fieldCache = new ConcurrentHashMap<>();
+
+    public static <T> List<T> copyBeanList(List<?> dest,Class<T> tClass){
+        List<T> list = new ArrayList<>();
+        for (Object v : dest) {
+            try {
+                list.add(copyBean(v, tClass));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+
+    public static <T> T copyBean(Object dest,Class<T> tClass){
+        T t = null;
+        try {
+            t = tClass.newInstance();
+            copyProperties(t,dest);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
 
     /**
      * @param dest 目标类

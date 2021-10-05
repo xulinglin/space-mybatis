@@ -1,7 +1,7 @@
 package com.space.springboot.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.space.core.annotation.Authority;
@@ -32,7 +32,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Authority
     public IPage<User> pageService(Page<User> page, User user) {
-        return this.page(page, new QueryWrapper<User>(user));
+        return this.page(page, Wrappers.<User>lambdaQuery(user));
     }
 
     /**
