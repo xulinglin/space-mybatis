@@ -21,10 +21,5 @@ import java.util.List;
 @Service("roleService")
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
-    @Override
-    @ExecutedBind
-    public List<RoleVo> get(List<Role> list){
-        return AsmUtils.copyBeanList(list, RoleVo.class);
-    }
 }
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.esotericsoftware.reflectasm.MethodAccess;
+import com.space.core.FieldInterceptor;
 import com.space.core.bean.Tools;
 
 /**
@@ -23,26 +24,43 @@ public class AsmUtils {
     private static Map<String, String> nameCache = new ConcurrentHashMap<>();
     private static Map<Class<?>, Field[]> fieldCache = new ConcurrentHashMap<>();
 
+
     public static <T> List<T> copyBeanList(List<?> dest,Class<T> tClass){
+        return copyBeanList(dest,tClass,Boolean.FALSE);
+    }
+
+    public static <T> T copyBean(Object dest,Class<T> tClass){
+        return copyBean(dest,tClass,Boolean.FALSE);
+    }
+
+    public static <T> List<T> copyBeanList(List<?> dest,Class<T> tClass,Boolean executedBind){
         List<T> list = new ArrayList<>();
         for (Object v : dest) {
             try {
-                list.add(copyBean(v, tClass));
+                list.add(copyBean(v, tClass,Boolean.FALSE));
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        if(executedBind){
+            FieldInterceptor.setFieldValue(list);
         }
         return list;
     }
 
 
-    public static <T> T copyBean(Object dest,Class<T> tClass){
+    public static <T> T copyBean(Object dest,Class<T> tClass,Boolean executedBind){
         T t = null;
         try {
             t = tClass.newInstance();
             copyProperties(t,dest);
         }catch (Exception e) {
             e.printStackTrace();
+        }
+        if(executedBind){
+            List<Object> list = new ArrayList<>();
+            list.add(t);
+            FieldInterceptor.setFieldValue(list);
         }
         return t;
     }

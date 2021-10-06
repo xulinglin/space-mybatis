@@ -13,6 +13,5 @@ import java.util.List;
  * @since 2021-09-28
  */
 public interface RoleService extends IService<Role> {
-    List<RoleVo> get(List<Role> list);
 }
 
